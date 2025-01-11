@@ -1,7 +1,6 @@
 import '../static/style.css'
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
     storySort: {
       order: [
@@ -15,3 +14,4 @@ export const parameters = {
     }
   }
 }
+export const tags = ['autodocs'];

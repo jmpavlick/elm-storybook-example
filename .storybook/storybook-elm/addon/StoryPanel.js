@@ -1,24 +1,22 @@
-const React = require('react')
-const { useParameter } = require('@storybook/api')
+import React from 'react';
+import { useParameter } from '@storybook/manager-api';
+import { PrismLight } from 'react-syntax-highlighter';
+import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import elm from 'react-syntax-highlighter/dist/esm/languages/prism/elm';
 
-const { PrismLight } = require('react-syntax-highlighter')
-const { oneLight } = require('react-syntax-highlighter/dist/cjs/styles/prism')
-const elm = require('react-syntax-highlighter/dist/cjs/languages/prism/elm')
-PrismLight.registerLanguage('elm', elm["default"])
+PrismLight.registerLanguage('elm', elm);
 
-const StoryPanel = () => {
-  const elmSource = useParameter('elmSource', null)
+export const StoryPanel = () => {
+  const elmSource = useParameter('elmSource', null);
 
   return elmSource
-    ? React.createElement(PrismLight, {
-      language: 'elm',
-      style: oneLight,
-      customStyle: { margin: 0 },
-      showLineNumbers: true
-    }, elmSource)
-    : null
-}
-
-module.exports = {
-  StoryPanel
-}
+    ? <PrismLight
+        language='elm'
+        style={oneLight}
+        customStyle={{ margin: 0 }}
+        showLineNumbers={true}
+      >
+        {elmSource}
+      </PrismLight>
+    : null;
+};
